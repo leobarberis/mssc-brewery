@@ -71,7 +71,7 @@ class BeerControllerTest {
                 .beerName("New Beer")
                 .build();
 
-        given(beerService.save(any())).willReturn(saved);
+        given(beerService.saveNewBeer(any())).willReturn(saved);
 
         mockMvc.perform(post(BASE_API_URL)
                 .contentType(MediaType.APPLICATION_JSON)
