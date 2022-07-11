@@ -1,7 +1,7 @@
 package guru.springframework.msscbrewery.web.controller;
 
 import guru.springframework.msscbrewery.web.model.CustomerDto;
-import guru.springframework.msscbrewery.web.services.CustomerService;
+import guru.springframework.msscbrewery.services.CustomerService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

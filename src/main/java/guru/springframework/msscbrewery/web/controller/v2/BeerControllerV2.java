@@ -1,7 +1,7 @@
 package guru.springframework.msscbrewery.web.controller.v2;
 
 import guru.springframework.msscbrewery.web.model.v2.BeerDtoV2;
-import guru.springframework.msscbrewery.web.services.v2.BeerServiceV2;
+import guru.springframework.msscbrewery.services.v2.BeerServiceV2;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
