@@ -2,6 +2,9 @@ package guru.springframework.msscbrewery.web.controller.v2;
 
 import guru.springframework.msscbrewery.web.model.v2.BeerDtoV2;
 import guru.springframework.msscbrewery.web.services.v2.BeerServiceV2;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,15 +17,14 @@ import java.util.UUID;
 
 //This validated annotation allows SB to validate controller methods params annotated with javax.constraints
 @Validated
+@Slf4j
+//This use of requiredArgsConstructor is pretty cool
+@RequiredArgsConstructor
 @RequestMapping("/api/v2/beer")
 @RestController
 public class BeerControllerV2 {
 
     private final BeerServiceV2 beerService;
-
-    public BeerControllerV2(BeerServiceV2 beerService) {
-        this.beerService = beerService;
-    }
 
     //This @NotNull annotation validate method params
     @GetMapping({"/{beerId}"})
@@ -33,8 +35,8 @@ public class BeerControllerV2 {
 
     @PostMapping
     public ResponseEntity handlePost(@Valid @NotNull @RequestBody BeerDtoV2 beerDto) {
-        BeerDtoV2 savedDto = beerService.saveNewBeer(beerDto);
-        HttpHeaders headers = new HttpHeaders();
+        val savedDto = beerService.saveNewBeer(beerDto);
+        val headers = new HttpHeaders();
         // Usually you want to return the full URL for the recently created resource, not the relative one as such
         //TODO add hostname to url
         headers.add("Location", "/api/v1/beer/" + savedDto.getId().toString());
